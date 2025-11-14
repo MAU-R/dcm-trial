@@ -1,0 +1,16 @@
+[ {
+  "name": "Elementor",
+  "slug": "elementor",
+  "required": false,
+  "force_activation": false
+}, {
+  "name": "Kirki Customizer Framework",
+  "slug": "kirki",
+  "required": false,
+  "force_activation": false
+},{
+  "name": "Essential Addons for Elementor",
+  "slug": "essential-addons-for-elementor-lite",
+  "required": false,
+  "force_activation": false
+}]
