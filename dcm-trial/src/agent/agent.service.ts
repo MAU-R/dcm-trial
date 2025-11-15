@@ -8,6 +8,7 @@ export class AgentService {
   private model: ChatGroq;
   private prompt: PromptTemplate;
 
+  
   constructor(private readonly mailService: MailService) {
     this.model = new ChatGroq({
       apiKey: process.env.GROQ_API_KEY,
