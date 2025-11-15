@@ -125,7 +125,10 @@ http://localhost:8535 if the main.ts is not modified
 
 This guide explains how to  expose localhost backend to the internet using **ngrok**, so the WordPress (Elementor) frontend can call the API externally during testing or demo presentations.
 
-
+##ENV FILE
+- env example is inside the root folder of the backend dcm-trial/
+- make sure you include all the keys inside an .env in the root folder of the app, as all of them are important
+  
 ### REQUIREMENTS
 
 Make sure you have these installed before continuing:
