@@ -8,7 +8,7 @@ async function bootstrap() {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: '*',
-    credentials: false, // importante para ngrok
+    credentials: false,
     preflightContinue: false,
     optionsSuccessStatus: 200,
   });

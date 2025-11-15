@@ -9,7 +9,7 @@ export class AgentController {
   @UseGuards(JwtAuthGuard)
   @Post('summarize')
   async summarize(@Body('question') question: string, @Req() req) {
-    const email = req.user.email; // ← viene del JWT
+    const email = req.user.email;
     return this.agentService.summarizeQuestion(question, email);
   }
 }

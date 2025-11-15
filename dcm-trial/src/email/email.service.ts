@@ -1,4 +1,3 @@
-// src/email/email.service.ts
 import {
   Injectable,
   Logger,
@@ -26,13 +25,11 @@ export class MailService {
     this.transporter = nodemailer.createTransport({
       host,
       port,
-      secure: port === 465, // true for 465, false for 587
+      secure: port === 465, 
       auth: {
         user,
         pass,
       },
-      // opcional para evitar problemas con certificados en dev:
-      // tls: { rejectUnauthorized: false },
     });
   }
 
@@ -52,11 +49,9 @@ export class MailService {
       });
 
       this.logger.log(`Email sent: ${info.messageId}`);
-      // Si quieres la URL de prueba (nodemailer test) puedes hacer nodemailer.getTestMessageUrl(info)
       return info;
     } catch (err) {
       this.logger.error('sendSummaryEmail failed', err);
-      // Lanzar excepción depende de tu diseño; en AgentService puedes atraparlo y no romper la respuesta
       throw new InternalServerErrorException(
         'Could not send summary email: ' + err?.message,
       );

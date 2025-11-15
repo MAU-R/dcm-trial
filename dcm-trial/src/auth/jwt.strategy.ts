@@ -8,12 +8,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET, // <- tu secreto aquí
+      secretOrKey: process.env.JWT_SECRET,
     });
   }
 
   async validate(payload: any) {
-    // Aquí Nest inyectará req.user automáticamente
     return { uid: payload.uid, email: payload.email, name: payload.name };
   }
 }

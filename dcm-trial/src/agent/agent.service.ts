@@ -1,4 +1,3 @@
-// agent.service.ts
 import { Injectable } from '@nestjs/common';
 import { ChatGroq } from '@langchain/groq';
 import { PromptTemplate } from '@langchain/core/prompts';
@@ -46,10 +45,8 @@ Return ONLY the summary.
   }
 
   async summarizeQuestion(question: string, userEmail: string) {
-    // render final prompt text
     const finalPrompt = await this.prompt.format({ question });
 
-    // invoke directly
     const response = await this.model.invoke(finalPrompt);
 
     const summary = response?.content ?? 'No hubo respuesta del agente';

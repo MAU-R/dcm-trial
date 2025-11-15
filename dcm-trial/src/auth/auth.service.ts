@@ -8,9 +8,6 @@ import * as admin from 'firebase-admin';
 import * as jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
 
-// ---------------------------------------------------
-// Firebase Login Response Type
-// ---------------------------------------------------
 interface FirebaseLoginResponse {
   localId: string;
   idToken: string;
@@ -32,9 +29,6 @@ export class AuthService {
     return this.firebaseApp.auth();
   }
 
-  // ---------------------------------------------------
-  // REGISTER
-  // ---------------------------------------------------
   async register(name: string, email: string, password: string) {
     try {
       const userRecord = await this.auth.createUser({
@@ -55,9 +49,6 @@ export class AuthService {
     }
   }
 
-  // ---------------------------------------------------
-  // LOGIN
-  // ---------------------------------------------------
   async login(email: string, password: string) {
     try {
       const firebaseData = await this.verifyFirebasePassword(email, password);
@@ -69,17 +60,12 @@ export class AuthService {
         email: user.email,
         name: user.displayName,
       });
-      console.log('TOKEN CREADO:', token);
       return { token };
     } catch (err) {
-      console.error('LOGIN ERROR:', err);
       throw new UnauthorizedException('Invalid credentials');
     }
   }
 
-  // ---------------------------------------------------
-  // Firebase Email/Password Authentication (REST API)
-  // ---------------------------------------------------
   private async verifyFirebasePassword(
     email: string,
     password: string,
@@ -103,9 +89,6 @@ export class AuthService {
     return data;
   }
 
-  // ---------------------------------------------------
-  // Create JWT for backend sessions
-  // ---------------------------------------------------
   private createToken(payload: any) {
     return jwt.sign(payload, this.JWT_SECRET, { expiresIn: '7d' });
   }
